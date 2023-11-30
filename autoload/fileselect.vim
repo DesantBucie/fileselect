@@ -31,6 +31,7 @@ var refreshTimerID: number = 0
 # File names matching this pattern are ignored
 var ignoreFilePat: string = '\%(^\..\+\)\|\%(^.\+\.o\)\|\%(^.\+\.obj\)'
 
+
 def Err(msg: string): void
   echohl ErrorMsg
   echo msg
@@ -132,8 +133,10 @@ def FilterNames(id: number, key: string): bool
         || key == "\<C-End>"
         || key == "\<C-N>"
         || key == "\<C-P>"
+        || key == "\<Tab>"
+        || key == "\<S-Tab>"
     # scroll the popup window
-    var cmd: string = 'normal! ' .. (key == "\<C-N>" ? 'j' : key == "\<C-P>" ? 'k' : key)
+    var cmd: string = 'normal! ' .. (key == "\<C-N>" || key == "\<Tab>" ? 'j' : key == "\<C-P>" || key == "\<S-Tab>" ? 'k' : key)
     cmd->win_execute(popupID)
     key_handled = true
   elseif key == "\<Up>" || key == "\<Down>"

@@ -131,12 +131,12 @@ def FilterNames(id: number, key: string): bool
         || key == "\<PageDown>"
         || key == "\<C-Home>"
         || key == "\<C-End>"
-        || key == "\<C-N>"
+    #    || key == "\<C-N>"
         || key == "\<C-P>"
         || key == "\<Tab>"
         || key == "\<S-Tab>"
     # scroll the popup window
-    var cmd: string = 'normal! ' .. (key == "\<C-N>" || key == "\<Tab>" ? 'j' : key == "\<C-P>" || key == "\<S-Tab>" ? 'k' : key)
+    var cmd: string = 'normal! ' .. (key == "\<Tab>" ? 'j' : key == "\<C-P>" || key == "\<S-Tab>" ? 'k' : key)
     cmd->win_execute(popupID)
     key_handled = true
   elseif key == "\<Up>" || key == "\<Down>"
